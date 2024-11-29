@@ -1,5 +1,5 @@
 # VRV Security - Intern Selection Assignment
-# Role-Based Authentication and Seller Dashboard
+ - Role-Based Authentication and Seller Dashboard
 
 ## Overview
 Matops Shop is a robust Spring Boot application designed to implement role-based authentication and authorization using OAuth2. It provides a flexible platform for managing different user roles (Admin, Seller, Buyer) and offers a tailored dashboard experience for sellers to manage their products, view orders, and analyze product-specific statistics.
