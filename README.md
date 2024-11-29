@@ -146,21 +146,33 @@ This system ensures a seamless and secure experience for different roles while a
 ## Project Structure
 ```bash
 src/main/java/com/matops/vsv_security
-├── config/              # Spring Security configurations
-├── controller/          # REST controllers for different roles
-│   ├── AdminController  # Controller for admin-specific operations
-│   ├── BuyerController  # Controller for buyer-specific operations
-│   └── SellerController # Controller for seller-specific operations
-├── model/               # Data models (e.g., Seller, Product, Order)
-├── repository/          # JPA repositories for database interaction
-├── service/             # Business logic and services
-│   ├── ProductService   # Service layer for product-related logic
-│   ├── SellerService    # Service layer for seller-related logic
-│   └── StatisticsService# Service for analytics and statistics
+├── config/
+│   ├── SecurityConfig.java
+├── controller/
+│   ├── AdminController.java
+│   ├── BuyerController.java
+│   ├── SellerController.java
+├── model/
+│   ├── Product.java
+│   ├── Seller.java
+│   ├── Order.java
+│   ├── User.java
+├── repository/
+│   ├── ProductRepository.java
+│   ├── OrderRepository.java
+│   ├── UserRepository.java
+│   └── SellerRepository.java
+├── service/
+│   ├── ProductService.java
+│   ├── SellerService.java
+│   ├── StatisticsService.java
+│   └── UserService.java
 └── resources/
-    ├── templates/       # Thymeleaf templates for UI
-    │   ├── seller/      # Seller-specific pages (e.g., orders, products)
-    │   └── shared/      # Common pages (e.g., login)
-    └── application.properties # Configuration properties
+    ├── templates/
+    │   ├── admin/
+    │   ├── buyer/
+    │   └── seller/
+    ├── application.properties
+
 ```
 
