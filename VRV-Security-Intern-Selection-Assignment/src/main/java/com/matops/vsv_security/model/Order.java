@@ -1,27 +1,17 @@
 package com.matops.vsv_security.model;
 
-import jakarta.persistence.*;
-import java.util.List;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "orders")
 public class Order {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private Long productId;
+    private Long buyerId;
 
-    private String customerEmail;
-
-    @ManyToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinTable(
-        name = "order_products",
-        joinColumns = @JoinColumn(name = "order_id"),
-        inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
-    private List<Product> products;
-
-    // Getters and setters
     public Long getId() {
         return id;
     }
@@ -30,19 +20,19 @@ public class Order {
         this.id = id;
     }
 
-    public String getCustomerEmail() {
-        return customerEmail;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public Long getBuyerId() {
+        return buyerId;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setBuyerId(Long buyerId) {
+        this.buyerId = buyerId;
     }
 }

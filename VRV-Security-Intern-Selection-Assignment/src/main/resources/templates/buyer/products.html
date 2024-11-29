@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Buyer - Browse Products</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #1c1c1c; /* Dark background */
+            color: #ffffff; /* White text */
+        }
+
+        h1 {
+            color: #00ff00; /* Neon green for headings */
+            text-align: center;
+            font-size: 2.5em;
+            margin-top: 50px;
+            font-weight: bold;
+        }
+
+        /* Table Styles */
+        table {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: #2e2e2e; /* Darker container */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333333; /* Darker header */
+            color: #00ff00; /* Neon green text */
+        }
+
+        td {
+            background-color: #2e2e2e; /* Same as container */
+            color: #dcdcdc; /* Light gray text */
+            border-bottom: 1px solid #444444; /* Subtle separator */
+        }
+
+        /* Link Styles */
+        a {
+            color: #3498db; /* Blue links */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2980b9; /* Darker blue on hover */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Browse Products</h1>
+
+    <!-- List of products -->
+    <table>
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.price}"></td>
+                <td>
+                    <a th:href="@{/buyer/products/{id}/view(id=${product.id})}">View</a> |
+                    <a th:href="@{/buyer/products/{id}/buy(id=${product.id})}">Buy</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

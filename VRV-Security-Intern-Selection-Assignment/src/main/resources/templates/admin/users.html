@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin - Manage Users</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #1c1c1c; /* Dark background */
+            color: #ffffff; /* White text */
+        }
+
+        h1, h2 {
+            color: #00ff00; /* Neon green for headings */
+            text-align: center;
+            font-size: 2.5em;
+            margin-top: 50px;
+            font-weight: bold;
+        }
+
+        /* Table Styles */
+        table {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: #2e2e2e; /* Darker container */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #333333; /* Darker header */
+            color: #00ff00; /* Neon green text */
+        }
+
+        td {
+            background-color: #2e2e2e; /* Same as container */
+            color: #dcdcdc; /* Light gray text */
+            border-bottom: 1px solid #444444; /* Subtle separator */
+        }
+
+        a {
+            color: #3498db; /* Blue links */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #2980b9; /* Darker blue on hover */
+        }
+
+        /* Form Styles */
+        form {
+            max-width: 500px;
+            margin: 40px auto;
+            background-color: #2e2e2e; /* Darker container */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+            color: #dcdcdc; /* Light gray text */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #dcdcdc;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            background-color: #444444; /* Darker input field */
+            color: #dcdcdc;
+            border: 1px solid #555555;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #3498db; /* Blue button */
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9; /* Darker blue on hover */
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Manage Users</h1>
+
+    <!-- List of users -->
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.role}"></td>
+                <td>
+                    <!-- Edit and Delete actions -->
+                    <a th:href="@{/admin/users/{id}(id=${user.id})}">Edit</a> |
+                    <a th:href="@{/admin/users/{id}/delete(id=${user.id})}">Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Create New User</h2>
+    <form th:action="@{/admin/users}" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required/>
+
+        <label for="role">Role:</label>
+        <select id="role" name="role">
+            <option value="ADMIN">Admin</option>
+            <option value="SELLER">Seller</option>
+            <option value="BUYER">Buyer</option>
+        </select>
+
+        <button type="submit">Create User</button>
+    </form>
+</body>
+</html>
