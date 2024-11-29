@@ -1,0 +1,63 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.0'
+    id 'io.spring.dependency-management' version '1.1.6'
+}
+
+group = 'com.matops'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // Spring Boot Starters
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-web'  // Web and REST API
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'  // Thymeleaf templates
+
+    // Spring Security
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    // OAuth2 and JWT
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'  // OAuth2 client
+    implementation 'org.springframework.security:spring-security-oauth2-client'  // OAuth2 support
+
+    // JPA and Database (for storing roles, users, etc.)
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'  // JPA for database integration
+    implementation 'com.h2database:h2'  // H2 in-memory database for testing (you can switch to MySQL/PostgreSQL)
+
+    // Logging (optional for better debugging)
+    implementation 'org.springframework.boot:spring-boot-starter-logging'
+
+    // Testing
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+
+    implementation 'org.springframework.security:spring-security-oauth2-jose'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'com.h2database:h2' // If using H2 database, or replace with MySQL driver
+    testImplementation 'org.mockito:mockito-core:4.0.0'
+    
+
+
+}
+
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+test {
+    enabled = false
+}
+
+

@@ -1,0 +1,120 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* Global styles */
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background-color: #1c1c1c; /* Dark background */
+            color: #ffffff; /* White text */
+        }
+
+        h1 {
+            color: #00ff00; /* Neon green for headings */
+            text-align: center;
+            font-size: 3em;
+            margin-top: 50px;
+            font-weight: bold;
+        }
+
+        /* Dashboard Page Styles */
+        .dashboard-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #2e2e2e; /* Darker container */
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .dashboard-container h1 {
+            color: #00ff00; /* Neon green */
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .user-info {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #dcdcdc; /* Light gray for text */
+        }
+
+        .user-info li {
+            padding: 8px;
+            border-bottom: 1px solid #444444; /* Subtle separator */
+        }
+
+        .logout-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #e74c3c; /* Red logout button */
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .logout-link:hover {
+            background-color: #c0392b; /* Darker red on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard-container">
+    <h1>Welcome to Your Dashboard</h1>
+    <p>User Info:</p>
+    <ul class="user-info" th:each="entry : ${user}">
+        <li th:text="${entry.key + ': ' + entry.value}"></li>
+    </ul>
+    <a href="/logout" class="logout-link">Logout</a>
+</div>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1>Welcome to the Dashboard</h1>
+        <div class="row">
+            <div class="col-4">
+                <h3>Manage Products</h3>
+                <ul>
+                    <li><a href="/products/list">View All Products</a></li>
+                    <li><a href="/products/add">Add New Product</a></li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <h3>Your Orders</h3>
+                <ul>
+                    <li><a href="/orders/history">View Your Orders</a></li>
+                </ul>
+            </div>
+            <div class="col-4">
+                <h3>Account</h3>
+                <ul>
+                    <li><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
